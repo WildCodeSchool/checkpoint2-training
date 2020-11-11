@@ -1,7 +1,8 @@
-export default function footer(){
+export default function footer(props){
+    const {year, authorName} = props;
     return(
         <footer>
-            <p>© 2020 Your Name</p>
+            <p>© {year} {authorName}</p>
         </footer>
     )
 }

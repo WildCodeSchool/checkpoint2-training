@@ -1,9 +1,10 @@
-export default function person(){
+export default function person(props){
+    const{firstName, lastName, pic, city, country} = props;
     return(
         <div>
-            <h3>Foo Bar</h3>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Missing_avatar.svg/200px-Missing_avatar.svg.png" alt="Foo Bar"/>
-            <p>Paris, France</p>
+            <h3>{firstName} {lastName}</h3>
+            <img src={pic} alt=`${firstName} ${lastName}`/>
+            <p>{city}, {country}</p>
         </div>
     )
 }

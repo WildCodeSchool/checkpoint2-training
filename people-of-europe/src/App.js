@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Header title="Le Wilder aux plus beaux cheveux"/>
       <Person/>
-      <Footer/>
+      <Footer year="2020" authorName="Floran Eiclies"/>
     </div>
   );
 }
