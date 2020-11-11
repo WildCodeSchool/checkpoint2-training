@@ -1,11 +1,11 @@
 import React from "react";
 
-function Title() {
+function Header(props) {
   return (
-    <div>
-      <h1>This is a fake title</h1>
+    <div className="header">
+      <h1 className="title">{props.title}</h1>
     </div>
   );
 }
 
-export default Title;
+export default Header;
