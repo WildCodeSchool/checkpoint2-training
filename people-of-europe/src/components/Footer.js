@@ -1,9 +1,9 @@
 import React from "react";
 
-function Footer(props) {
+function Footer({ year, authorName }) {
   return (
     <footer className="footer">
-      © {props.year} {props.authorName}
+      © {year} {authorName}
     </footer>
   );
 }

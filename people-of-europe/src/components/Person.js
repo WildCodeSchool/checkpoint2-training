@@ -1,14 +1,15 @@
 import React from "react";
 
-function Person() {
+function Person({ firstName, lastName, pic, city, country }) {
   return (
-    <div className="persone">
-      <h3>Foo Bar</h3>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Missing_avatar.svg/200px-Missing_avatar.svg.png"
-        alt="Foo Bar"
-      ></img>
-      <p>Paris, France</p>
+    <div className="person">
+      <h3>
+        {firstName} {lastName}
+      </h3>
+      <img src={pic} alt={firstName + lastName}></img>
+      <p>
+        {city}, {country}
+      </p>
     </div>
   );
 }
