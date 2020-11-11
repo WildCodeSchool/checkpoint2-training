@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <Header title="React is a nightmare" />
       <Person />
-      <Footer />
+      <Footer year="2020" authorName="Miguel Santos" />
     </div>
   );
 }

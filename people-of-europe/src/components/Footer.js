@@ -1,7 +1,12 @@
 import React from "react";
 
-function Footer() {
-  return <footer>© 2020 Your Name</footer>;
+function Footer(props) {
+  return (
+    <footer className="footer">
+      {" "}
+      © {props.year} {props.authorName}
+    </footer>
+  );
 }
 
 export default Footer;
