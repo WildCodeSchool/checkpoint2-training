@@ -61,7 +61,6 @@ function PersonList() {
           />
         )
       )}
-      ;
     </div>
   );
 }
