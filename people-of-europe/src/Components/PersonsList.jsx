@@ -50,8 +50,8 @@ const PersonsList = () => {
           firstName={singlePerson.firstName}
           lastName={singlePerson.lastName}
           pic={singlePerson.pic}
-          city={singlePerson.city}
-          country={singlePerson.country}
+          city={singlePerson.loc.city}
+          country={singlePerson.loc.country}
         />
       ))}
     </div>

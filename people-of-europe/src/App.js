@@ -8,8 +8,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Header title="Meilleur employé du mois" />
+      <Header title="Meilleurs employés du mois" />
       <PersonsList />
+      <button type="submit">Affiche des employés modèles</button>
       <Footer year="2020" authorName="Valérie Tylski Vincent" />
     </div >
   );
