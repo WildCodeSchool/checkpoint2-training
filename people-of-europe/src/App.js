@@ -12,6 +12,7 @@ class App extends React.Component {
     this.state = {
       onePerson: [],
     };
+    this.modifyPeopleDisplayed = this.modifyPeopleDisplayed.bind(this);
   }
 
   componentDidMount() {
@@ -30,13 +31,30 @@ class App extends React.Component {
       });
   };
 
+  modifyPeopleDisplayed(click) {
+    const displayNationality = click.target.id;
+
+    const url = "https://my-json-server.typicode.com/bhubr/people-api/people";
+    axios
+      .get(url)
+      .then((response) => response.data)
+      .then((arrayOfPeople) => {
+        this.setState({
+          onePerson: arrayOfPeople.filter(country => country.nat == displayNationality),
+        });
+      });
+  }
+
   render() {
     const { onePerson } = this.state;
     return (
       <div className="App" >
         <Header title="Meilleurs employés du mois" />
+        <button id="German" onClick={this.modifyPeopleDisplayed}>Allemands</button>
+        <button id="British" onClick={this.modifyPeopleDisplayed}>Anglais</button>
+        <button id="Spanish" onClick={this.modifyPeopleDisplayed}>Espagnols</button>
+        <button id="French" onClick={this.modifyPeopleDisplayed}>Français</button>
         <PersonsList onePerson={onePerson} />
-        <button>Montre-moi les Espagnols</button>
         <Footer year="2020" authorName="Valérie Tylski Vincent" />
       </div >
     );
