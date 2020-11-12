@@ -1,14 +1,15 @@
 import React from "react";
 
 const Person = (props) => {
+  const { firstName, lastName, pic, city, country } = props;
   return (
     <div>
       <h3>
-        {props.firstName} {props.lastName}
+        {firstName} {lastName}
       </h3>
-      <img src={props.pic} alt={props.firstName + " " + props.lastName} />
+      <img src={pic} alt={firstName + " " + lastName} />
       <p>
-        {props.city}, {props.country}
+        {city}, {country}
       </p>
     </div>
   );
