@@ -1,11 +1,12 @@
 import React from 'react';
+import './Person.css';
 
-function Person() {
+function Person(props) {
   return (
     <div className="Person">
-      <h3>Foo Bar</h3>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Missing_avatar.svg/200px-Missing_avatar.svg.png" alt="Foo Bar" />
-      <p>Paris, France</p>
+      <h3>{props.firstName} {props.lastName}</h3>
+      <img src={props.pic} alt="Foo Bar" />
+      <p>{props.city}, {props.country}</p>
     </div>
   );
 }
