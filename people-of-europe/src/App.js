@@ -13,6 +13,13 @@ function App() {
         city="Winterset"
         country="United States"
       />
+      <Person
+        firstName="Mary"
+        lastName="Wayne"
+        pic="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Missing_avatar.svg/200px-Missing_avatar.svg.png"
+        city="Helsinki"
+        country="Finland"
+      />
       <Footer year="2020" authorName="Benoît Hubert" />
     </div>
   );
