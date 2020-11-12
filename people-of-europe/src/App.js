@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import './App.css';
 import Header from "./components/Header";
@@ -17,13 +17,15 @@ function App() {
     }
   };
 
-  axios.request(options)
-  .then((response) => response.data)
-  .then(data => {
-    setPeople(data)})
-  .catch(function (error) {
-    console.error(error);
-  });
+  useEffect(() => {
+    axios.request(options)
+    .then((response) => response.data)
+    .then(data => {
+      setPeople(data)})
+    .catch(function (error) {
+      console.error(error);
+    });
+  }) ;
 
   return (
     <div className="App">
