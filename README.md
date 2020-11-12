@@ -26,7 +26,7 @@ Tu ne vas pas t'en servir _tout de suite_, mais l'API que tu vas utiliser est h�
 
 ## Commencer
 
-* **Clone** ce repo, et après t'être placé **dedans**, créé une branche `nom_prenom` 
+* **Clone** ce repo, et après t'être placé **dedans**, créé une branche `nom_prenom`
 * Crée un nouveau projet React nommé **people-of-europe** grâce à `create-react-app` (la [doc](https://create-react-app.dev/docs/getting-started#quick-start) pour rappel)
 
 ## Afficher des composants
@@ -57,51 +57,78 @@ Il est temps de remplacer les contenus en dur, en utilisant des props !
 
 ## Répéter un composant
 
-Crée un composant `PersonList` et fais lui répéter le composant `Person` à partir de ce tableau de personnes d'exemple :
+Crée un composant `PersonList` et fais lui répéter le composant `Person` à partir du tableau de personnes ci-dessous.
 
 ```javascript
 const samplePersons = [
-{
-    "id": 3,
-    "firstName": "Léa",
-    "lastName": "Marchand",
-    "gender": "female",
-    "loc": {
-      "city": "Dunkerque",
-      "country": "France"
+  {
+    id: 3,
+    firstName: 'Léa',
+    lastName: 'Marchand',
+    gender: 'female',
+    loc: {
+      city: 'Dunkerque',
+      country: 'France',
     },
-    "email": "lea.marchand@example.com",
-    "pic": "https://randomuser.me/api/portraits/women/0.jpg",
-    "nat": "French"
+    email: 'lea.marchand@example.com',
+    pic: 'https://randomuser.me/api/portraits/women/0.jpg',
+    nat: 'French',
   },
   {
-    "id": 4,
-    "firstName": "Matteo",
-    "lastName": "Michel",
-    "gender": "male",
-    "loc": {
-      "city": "Boulogne-Billancourt",
-      "country": "France"
+    id: 4,
+    firstName: 'Matteo',
+    lastName: 'Michel',
+    gender: 'male',
+    loc: {
+      city: 'Boulogne-Billancourt',
+      country: 'France',
     },
-    "email": "matteo.michel@example.com",
-    "pic": "https://randomuser.me/api/portraits/men/46.jpg",
-    "nat": "French"
+    email: 'matteo.michel@example.com',
+    pic: 'https://randomuser.me/api/portraits/men/46.jpg',
+    nat: 'French',
   },
   {
-    "id": 5,
-    "firstName": "Anett",
-    "lastName": "Schenkel",
-    "gender": "female",
-    "loc": {
-      "city": "Lennestadt",
-      "country": "Germany"
+    id: 5,
+    firstName: 'Anett',
+    lastName: 'Schenkel',
+    gender: 'female',
+    loc: {
+      city: 'Lennestadt',
+      country: 'Germany',
     },
-    "email": "anett.schenkel@example.com",
-    "pic": "https://randomuser.me/api/portraits/women/36.jpg",
-    "nat": "German"
-  }
+    email: 'anett.schenkel@example.com',
+    pic: 'https://randomuser.me/api/portraits/women/36.jpg',
+    nat: 'German',
+  },
 ];
 ```
 
+## Requêter l'API
 
-... TO BE CONTINUED ...
+Cette partie implique d'utiliser deux, voire trois notions :
+
+* Utilisation du state (React 05)
+* Requêtes API avec Fetch ou Axios (React 07)
+* Pour déclencher la requête :
+
+    * Soit utiliser un bouton pour déclencher la requête (quête React 04 sur les évènements)
+    * Soit déclencher l'appel à l'API via `componentDidMount` (quête React 08)
+
+Il va te falloir :
+
+* Requêter l'URL de l'API : <https://my-json-server.typicode.com/bhubr/people-api/people>
+* Stocker les données dans le state de `App`
+* Faire passer les données de `App` à `PersonList`
+* Supprimer les données en dur (`samplePersons`) qui ne serviront plus
+
+## Filtrer la liste de personnes
+
+On peut imaginer plusieurs critères de filtrage :
+
+* Par genre (`gender`) en utilisant un `select`,
+* Par nationalité (`nat`), toujours avec un `select`,
+* Par prénom/nom, en utilisant un champ `input`.
+
+Tu peux implémenter un ou plusieurs de ces filtres. Chaque champ (select ou input) doit avoir une donnée correspondante dans le state, permettant de filtrer le jeu de résultats.
+
+Le mieux est ensuite d'implémenter le filtrage dans le `render` de `App`.
