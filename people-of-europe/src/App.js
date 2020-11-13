@@ -22,14 +22,21 @@ class App extends Component {
         return response.data;
       })
       .then(persons => {
+        console.log('change state', persons);
         this.setState({
           persons: persons
         });
       });
   }
 
+  componentDidMount() {
+    console.log('did mount');
+    this.fetchPersons();
+  }
+
   render() {
     const { persons } = this.state;
+    console.log('render', persons);
     return (
       <div className="App">
         <Header title="People of Europe" />
