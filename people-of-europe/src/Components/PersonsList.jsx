@@ -12,6 +12,7 @@ const PersonsList = (props) => {
           pic={singlePerson.pic}
           city={singlePerson.loc.city}
           country={singlePerson.loc.country}
+          key={singlePerson.id}
         />
       ))}
     </article>

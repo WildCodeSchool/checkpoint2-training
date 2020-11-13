@@ -14,6 +14,7 @@ class App extends React.Component {
       searchThisPerson: ""
     };
     this.modifyPeopleDisplayed = this.modifyPeopleDisplayed.bind(this);
+    this.modifyGender = this.modifyGender.bind(this);
     this.searchPerson = this.searchPerson.bind(this);
   }
 
@@ -34,19 +35,39 @@ class App extends React.Component {
   };
 
   modifyPeopleDisplayed(click) {
+    click.preventDefault();
     const displayNationality = click.target.id;
-    const url = "https://my-json-server.typicode.com/bhubr/people-api/people"
+    const url = "https://my-json-server.typicode.com/bhubr/people-api/people";
     axios
       .get(url)
       .then((response) => response.data)
       .then((arrayOfPeople) => {
         this.setState({
-          onePerson: arrayOfPeople.filter(country => country.nat == displayNationality),
+          onePerson: arrayOfPeople.filter(country => country.nat === displayNationality),
         });
       });
   }
 
+  modifyGender(click) {
+    click.preventDefault();
+    const displayGender = click.target.value;
+    const url = "https://my-json-server.typicode.com/bhubr/people-api/people";
+    if (displayGender != '') {
+      axios
+        .get(url)
+        .then((response) => response.data)
+        .then((arrayOfPeople) => {
+          this.setState({
+            onePerson: arrayOfPeople.filter(person => person.gender === displayGender),
+          });
+        });
+    } else {
+      this.fetchPeople();
+    }
+  }
+
   searchPerson(event) {
+    event.preventDefault();
     this.setState({
       searchThisPerson: event.target.value,
     });
@@ -77,15 +98,31 @@ class App extends React.Component {
     const { onePerson, searchThisFirstName, searchThisLastName } = this.state;
     return (
       <div className="App" >
-        <Header title="Meilleurs employés du mois" />
-        <button id="German" onClick={this.modifyPeopleDisplayed}>Allemands</button>
-        <button id="British" onClick={this.modifyPeopleDisplayed}>Anglais</button>
-        <button id="Spanish" onClick={this.modifyPeopleDisplayed}>Espagnols</button>
-        <button id="French" onClick={this.modifyPeopleDisplayed}>Français</button>
-        <form><p>Quelle personne recherchez-vous ?</p><label htmlFor="searchingFirstName">Prénom :<input id="searchingFirstName" placeholder="John" value={searchThisFirstName} onChange={this.searchPerson} /></label>
-          <label htmlFor="searchingLastName">Nom :<input id="searchingLastName" placeholder="Doe" value={searchThisLastName} onChange={this.searchPerson} /></label></form>
+        <Header title="Les meilleurs employés du mois" />
+        <form>
+          <div className="blockResearch">
+            <p>Quelle personne recherchez-vous&nbsp;?</p><label htmlFor="searchingFirstName">Prénom :<input id="searchingFirstName" placeholder="John" value={searchThisFirstName} onChange={this.searchPerson} /></label>
+            <label htmlFor="searchingLastName">Nom :<input id="searchingLastName" placeholder="Doe" value={searchThisLastName} onChange={this.searchPerson} /></label>
+          </div>
+          <div className="blockNationality">
+            <p>De quel pays&nbsp;?</p>
+            <button id="German" onClick={this.modifyPeopleDisplayed}>Allemands</button>
+            <button id="British" onClick={this.modifyPeopleDisplayed}>Anglais</button>
+            <button id="Spanish" onClick={this.modifyPeopleDisplayed}>Espagnols</button>
+            <button id="French" onClick={this.modifyPeopleDisplayed}>Français</button>
+          </div>
+          <div className="blockGender">
+            <label htmlFor="gender">Cherchez-vous un homme ou une femme&nbsp;?
+          <select id="gender" onChange={this.modifyGender}>
+                <option value="">Choisissez</option>
+                <option value="male">Un homme</option>
+                <option value="female">Une femme</option>
+              </select>
+            </label>
+          </div>
+        </form>
         <PersonsList onePerson={onePerson} />
-        <button id="German" onClick={this.fetchPeople}>Voir tout le monde</button>
+        <button className="seeAll" onClick={this.fetchPeople}>Voir tout le monde</button>
         <Footer year="2020" authorName="Valérie Tylski Vincent" />
       </div >
     );
