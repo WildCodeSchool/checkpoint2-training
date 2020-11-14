@@ -1,15 +1,21 @@
 import React from "react";
+import "./Person.css";
 
 class Person extends React.Component {
   render() {
+    const { person } = this.props;
+    console.log(this.props);
+
     return (
-      <div>
+      <div className="Person">
         <p>
-          {this.props.firstName} {this.props.lastName}
+          {person.firstName} {person.lastName}
         </p>
-        <img src={this.props.pic} alt={this.props.firstName} />
-        <p>{this.props.city}</p>
-        <p>{this.props.country}</p>
+        <img src={person.pic} alt={person.firstName} />
+        <p>{person.loc.city}</p>
+        <p>{person.loc.country}</p>
+        <p>{person.email}</p>
+        <p>{person.nat}</p>
         <br />
       </div>
     );
