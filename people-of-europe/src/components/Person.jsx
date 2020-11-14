@@ -4,7 +4,6 @@ import "./Person.css";
 class Person extends React.Component {
   render() {
     const { person } = this.props;
-    console.log(this.props);
 
     return (
       <div className="Person">
