@@ -1,16 +1,19 @@
 import React from "react";
 
-function Person() {
-  return (
-    <div>
-      <h3>Foo Bar</h3>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Missing_avatar.svg/200px-Missing_avatar.svg.png"
-        alt="foo bar"
-      />
-      <p>Paris, France</p>
-    </div>
-  );
+class Person extends React.Component {
+  render() {
+    return (
+      <div>
+        <p>
+          {this.props.firstName} {this.props.lastName}
+        </p>
+        <img src={this.props.pic} alt={this.props.firstName} />
+        <p>{this.props.city}</p>
+        <p>{this.props.country}</p>
+        <br />
+      </div>
+    );
+  }
 }
 
 export default Person;

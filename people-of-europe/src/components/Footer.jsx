@@ -1,11 +1,16 @@
 import React from "react";
 
-function Footer() {
-  return (
-    <div>
-      <p>© 2020 Cédric PRIOURET</p>
-    </div>
-  );
+class Footer extends React.Component {
+  render() {
+    return (
+      <div>
+        <p>
+          {this.props.year}
+          {this.props.authorName}
+        </p>
+      </div>
+    );
+  }
 }
 
 export default Footer;

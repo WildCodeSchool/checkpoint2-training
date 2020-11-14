@@ -1,11 +1,13 @@
 import React from "react";
 
-function Header() {
-  return (
-    <div>
-      <h1>This is a fake title</h1>
-    </div>
-  );
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>{this.props.title}</h1>
+      </div>
+    );
+  }
 }
 
 export default Header;
