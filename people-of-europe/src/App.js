@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PersonList from './components/PersonList';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -29,7 +30,7 @@ class App extends React.Component {
       <div className="App">
         <Header title="Je commence à comprendre" />
         <PersonList person={this.state.person} />
-        <Footer year="2020 " authorName="Cédric Priouret" />
+        <Footer year="2020 " authorName="© Cédric Priouret" />
       </div>
     );
   }

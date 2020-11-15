@@ -7,9 +7,9 @@ class Person extends React.Component {
 
     return (
       <div className="Person">
-        <p>
+        <h3>
           {person.firstName} {person.lastName}
-        </p>
+        </h3>
         <img src={person.pic} alt={person.firstName} />
         <p>{person.loc.city}</p>
         <p>{person.loc.country}</p>
