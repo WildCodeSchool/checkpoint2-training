@@ -8,11 +8,16 @@ import './App.css';
 class App extends React.Component {
   state = {
     person: [],
+    prenom: '',
   };
 
   componentDidMount() {
     this.getPerson();
   }
+
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   getPerson = () => {
     axios
@@ -26,10 +31,19 @@ class App extends React.Component {
   };
 
   render() {
+    const { prenom, person } = this.state;
+    let filteredData = person;
+    if (prenom.length !== 0) {
+      filteredData = filteredData.filter((person) =>
+        person.firstName.toLowerCase().includes(prenom.toLowerCase())
+      );
+    }
+
     return (
       <div className="App">
-        <Header title="Je commence à comprendre" />
-        <PersonList person={this.state.person} />
+        <Header title="Meetic Europe" />
+        <input name="prenom" value={prenom} onChange={this.handleChange} />
+        <PersonList person={filteredData} />
         <Footer year="2020 " authorName="© Cédric Priouret" />
       </div>
     );
