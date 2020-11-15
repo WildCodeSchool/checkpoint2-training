@@ -46,21 +46,16 @@ const samplePersons = [
 function PersonList() {
   return (
     <div>
-      {samplePersons.map(
-        ({ id, firstName, lastName, loc, gender, email, pic, nat }) => (
-          <Person
-            id={id}
-            firstName={firstName}
-            lastName={lastName}
-            pic={pic}
-            city={loc.city}
-            gender={gender}
-            email={email}
-            nat={nat}
-            country={loc.country}
-          />
-        )
-      )}
+      {samplePersons.map(({ id, firstName, lastName, loc, pic }) => (
+        <Person
+          key={id}
+          firstName={firstName}
+          lastName={lastName}
+          pic={pic}
+          city={loc.city}
+          country={loc.country}
+        />
+      ))}
     </div>
   );
 }
