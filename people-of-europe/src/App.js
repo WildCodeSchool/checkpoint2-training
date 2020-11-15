@@ -1,8 +1,8 @@
-import React from "react";
-import axios from "axios";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import PersonList from "./components/PersonList";
+import React from 'react';
+import axios from 'axios';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import PersonList from './components/PersonList';
 
 class App extends React.Component {
   state = {
@@ -15,7 +15,7 @@ class App extends React.Component {
 
   getPerson = () => {
     axios
-      .get("https://my-json-server.typicode.com/bhubr/people-api/people")
+      .get('https://my-json-server.typicode.com/bhubr/people-api/people')
       .then((response) => response.data)
       .then((data) => {
         this.setState({
