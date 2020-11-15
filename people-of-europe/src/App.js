@@ -53,7 +53,6 @@ class App extends React.Component {
       );
     }
 
-    console.log(gender);
     return (
       <div className="App">
         <Header title="Meetic Europe" />
