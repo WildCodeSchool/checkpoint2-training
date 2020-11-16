@@ -1,11 +1,48 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import Person from "./components/Person";
 import Footer from "./components/Footer";
 import PersonList from "./components/PersonList";
+import axios from "axios";
 
-const App = () => {
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      persons: [],
+    };
+  }
+
+  componentDidMount() {
+    this.getPeople();
+  }
+
+  getPeople = () => {
+    axios
+      .get("https://my-json-server.typicode.com/bhubr/people-api/people")
+      .then((response) => response.data)
+      .then((data) =>
+        this.setState({
+          persons: data,
+        })
+      );
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Header title="This is a state title" />
+        <PersonList persons={this.state.persons} />
+        {/* <button type="button" onClick={this.getPeople}>
+          Get People
+        </button> */}
+        <Footer year="2020" authorName="Vivien Michelesi" />
+      </div>
+    );
+  }
+}
+
+/* const App = () => {
   return (
     <div className="App">
       <Header title="This is a props title" />
@@ -27,6 +64,6 @@ const App = () => {
       <PersonList />
     </div>
   );
-};
+}; */
 
 export default App;
