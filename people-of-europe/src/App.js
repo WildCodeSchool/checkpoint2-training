@@ -6,12 +6,9 @@ import PersonList from "./components/PersonList";
 import Footer from "./components/Footer";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      persons: [],
-    };
-  }
+  state = {
+    persons: [],
+  };
 
   fetchPersons = () => {
     axios
@@ -19,9 +16,9 @@ class App extends Component {
       .then((response) => {
         return response.data;
       })
-      .then((persons) => {
+      .then((data) => {
         this.setState({
-          persons: persons,
+          persons: data,
         });
       });
   };

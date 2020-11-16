@@ -5,7 +5,7 @@ import "./PersonList.css";
 function PersonList(props) {
   return (
     <div className="PersonList">
-      {props.Persons.map((singlePerson) => (
+      {props.persons.map((singlePerson) => (
         <Person
           key={singlePerson.id}
           firstName={singlePerson.firstName}
