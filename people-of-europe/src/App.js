@@ -15,6 +15,13 @@ function App() {
         city="Funchal"
         country="Portugal"
       />
+      <Person
+        firstName="Renaud"
+        lastName="Ripart"
+        pic="https://www.sofoot.com/IMG/joueurs/renaud-ripart-150441.jpg"
+        city="Nîmes"
+        country="France"
+      />
     </div>
   );
 }
