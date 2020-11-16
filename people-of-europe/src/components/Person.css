@@ -1,3 +1,7 @@
+.Person {
+  width: 32%;
+}
+
 .Person img {
   max-width: 150px;
 }
