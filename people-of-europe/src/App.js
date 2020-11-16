@@ -32,21 +32,10 @@ class App extends Component {
       });
   };
 
-  handleChangeGender = (event) => {
+  handleChange = (event) => {
+    const { name, value } = event.target;
     this.setState({
-      genderFilter: event.target.value,
-    });
-  };
-
-  handleChangeNationality = (event) => {
-    this.setState({
-      natFilter: event.target.value,
-    });
-  };
-
-  handleChangeName = (event) => {
-    this.setState({
-      nameFilter: event.target.value,
+      [name]: value,
     });
   };
 
@@ -93,8 +82,9 @@ class App extends Component {
             Gender{' '}
             <select
               id="genderSelect"
+              name="genderFilter"
               value={genderFilter}
-              onChange={this.handleChangeGender}
+              onChange={this.handleChange}
             >
               <option value="">&mdash;</option>
               <option value="female">Female</option>
@@ -105,8 +95,9 @@ class App extends Component {
             Nationality{' '}
             <select
               id="natSelect"
+              name="natFilter"
               value={natFilter}
-              onChange={this.handleChangeNationality}
+              onChange={this.handleChange}
             >
               <option value="">&mdash;</option>
               <option value="Spanish">Spanish</option>
@@ -119,9 +110,10 @@ class App extends Component {
             Name{' '}
             <input
               id="nameInput"
+              name="nameFilter"
               type="text"
               value={nameFilter}
-              onChange={this.handleChangeName}
+              onChange={this.handleChange}
             />
           </label>
         </div>
