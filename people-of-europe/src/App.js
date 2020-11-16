@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       persons: [],
       genderFilter: '',
+      natFilter: '',
     };
   }
 
@@ -35,24 +36,54 @@ class App extends Component {
     });
   }
 
+  handleChangeNationality = (event) => {
+    this.setState({
+      natFilter: event.target.value,
+    });
+  }
+
   componentDidMount() {
     this.fetchPersons();
   }
 
+  getFilteredPersons = () => {
+    const { persons, genderFilter, natFilter } = this.state;
+    let filteredPersons = persons;
+
+    if (genderFilter !== '') {
+      filteredPersons = filteredPersons.filter((person) => person.gender === genderFilter);
+    }
+
+    if (natFilter !== '') {
+      filteredPersons = filteredPersons.filter((person) => person.nat === natFilter);
+    }
+
+    return filteredPersons;
+  }
+
   render() {
-    const { persons, genderFilter } = this.state;
-    const filteredPersons = genderFilter === ''
-      ? persons
-      : persons.filter((person) => person.gender === genderFilter);
+    const { genderFilter, natFilter } = this.state;
+    const filteredPersons = this.getFilteredPersons();
     return (
       <div className="App">
         <Header title="People of Europe" />
         <div>
           <label htmlFor="genderSelect">
+            Gender{' '}
             <select id="genderSelect" value={genderFilter} onChange={this.handleChangeGender}>
               <option value="">&mdash;</option>
               <option value="female">Female</option>
               <option value="male">Male</option>
+            </select>
+          </label>
+          <label htmlFor="natSelect">
+            Nationality{' '}
+            <select id="natSelect" value={natFilter} onChange={this.handleChangeNationality}>
+              <option value="">&mdash;</option>
+              <option value="Spanish">Spanish</option>
+              <option value="French">French</option>
+              <option value="British">British</option>
+              <option value="German">German</option>
             </select>
           </label>
         </div>
