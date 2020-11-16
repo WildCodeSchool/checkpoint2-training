@@ -3,6 +3,9 @@ import axios from 'axios';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PersonList from './components/PersonList';
+import GenderFilter from './components/GenderFilter';
+import NatFilter from './components/NatFilter';
+import NameFilter from './components/NameFilter';
 import './App.css';
 
 class App extends Component {
@@ -77,45 +80,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header title="People of Europe" />
-        <div>
-          <label htmlFor="genderSelect">
-            Gender{' '}
-            <select
-              id="genderSelect"
-              name="genderFilter"
-              value={genderFilter}
-              onChange={this.handleChange}
-            >
-              <option value="">&mdash;</option>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
-            </select>
-          </label>
-          <label htmlFor="natSelect">
-            Nationality{' '}
-            <select
-              id="natSelect"
-              name="natFilter"
-              value={natFilter}
-              onChange={this.handleChange}
-            >
-              <option value="">&mdash;</option>
-              <option value="Spanish">Spanish</option>
-              <option value="French">French</option>
-              <option value="British">British</option>
-              <option value="German">German</option>
-            </select>
-          </label>
-          <label htmlFor="nameInput">
-            Name{' '}
-            <input
-              id="nameInput"
-              name="nameFilter"
-              type="text"
-              value={nameFilter}
-              onChange={this.handleChange}
-            />
-          </label>
+        <div className="Filters">
+          <GenderFilter value={genderFilter} onChange={this.handleChange} />
+          <NatFilter value={natFilter} onChange={this.handleChange} />
+          <NameFilter value={nameFilter} onChange={this.handleChange} />
         </div>
         <PersonList persons={filteredPersons} />
         <Footer year="2020" authorName="Benoît Hubert" />
