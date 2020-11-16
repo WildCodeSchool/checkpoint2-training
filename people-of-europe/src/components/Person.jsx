@@ -1,14 +1,15 @@
 import React from "react";
 
-const Person = () => {
+const Person = (props) => {
   return (
     <div>
-      <h3>Foo Bar</h3>
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Missing_avatar.svg/200px-Missing_avatar.svg.png"
-        alt="Foo Bar"
-      />
-      <p>Paris, France</p>
+      <h3>
+        {props.firstName} {props.lastName}
+      </h3>
+      <img src={props.pic} alt={props.firstName + " " + props.lastName} />
+      <p>
+        {props.city}, {props.country}
+      </p>
     </div>
   );
 };
