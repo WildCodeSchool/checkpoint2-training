@@ -9,7 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      persons: []
+      persons: [],
+      genderFilter: '',
     };
   }
 
@@ -28,17 +29,34 @@ class App extends Component {
       });
   }
 
+  handleChangeGender = (event) => {
+    this.setState({
+      genderFilter: event.target.value,
+    });
+  }
+
   componentDidMount() {
     this.fetchPersons();
   }
 
   render() {
-    const { persons } = this.state;
+    const { persons, genderFilter } = this.state;
+    const filteredPersons = genderFilter === ''
+      ? persons
+      : persons.filter((person) => person.gender === genderFilter);
     return (
       <div className="App">
         <Header title="People of Europe" />
-        <PersonList persons={persons} />
-        <button type="button" onClick={this.fetchPersons}>Fetch persons</button>
+        <div>
+          <label htmlFor="genderSelect">
+            <select id="genderSelect" value={genderFilter} onChange={this.handleChangeGender}>
+              <option value="">&mdash;</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+          </label>
+        </div>
+        <PersonList persons={filteredPersons} />
         <Footer year="2020" authorName="Benoît Hubert" />
       </div>
     );
