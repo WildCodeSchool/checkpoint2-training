@@ -6,7 +6,7 @@ const Person = (props) => {
       <h3>
         {props.firstName} {props.lastName}
       </h3>
-      <img src={props.pic} alt={props.firstName + " " + props.lastName} />
+      <img src={props.pic} alt={`${props.firstName} ${props.lastName}`} />
       <p>
         {props.city}, {props.country}
       </p>

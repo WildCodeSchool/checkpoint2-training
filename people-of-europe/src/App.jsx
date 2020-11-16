@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Person from "./components/Person";
 import Footer from "./components/Footer";
+import PersonList from "./components/PersonList";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         country="Tibet"
       />
       <Footer year="2020" authorName="Vivien Michelesi" />
+      <PersonList />
     </div>
   );
 };
