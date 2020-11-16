@@ -1,9 +1,12 @@
+import { checkPropTypes } from "prop-types";
 import React from "react";
 
-function Footer() {
+function Footer(props) {
   return (
     <footer>
-      <p>@ 2020 Christophe</p>
+      <p>
+        @ {props.year} {props.authorName}
+      </p>
     </footer>
   );
 }
