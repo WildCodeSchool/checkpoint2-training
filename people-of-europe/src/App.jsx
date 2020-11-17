@@ -10,8 +10,15 @@ class App extends Component {
     super(props);
     this.state = {
       persons: [],
+      genderFilter: "",
     };
   }
+
+  handleChangeGender = (event) => {
+    this.setState({
+      genderFilter: event.target.value,
+    });
+  };
 
   componentDidMount() {
     this.getPeople();
@@ -29,10 +36,29 @@ class App extends Component {
   };
 
   render() {
+    const { persons, genderFilter } = this.state;
+    const filteredPersons =
+      genderFilter === ""
+        ? persons
+        : persons.filter((person) => person.gender === genderFilter);
     return (
       <div className="App">
         <Header title="This is a state title" />
-        <PersonList persons={this.state.persons} />
+        <div>
+          <label htmlFor="genderSelect">
+            Gender{""}
+            <select
+              id="genderSelect"
+              value={genderFilter}
+              onChange={this.handleChangeGender}
+            >
+              <option value="">&mdash;</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+          </label>
+        </div>
+        <PersonList persons={filteredPersons} />
         {/* <button type="button" onClick={this.getPeople}>
           Get People
         </button> */}
